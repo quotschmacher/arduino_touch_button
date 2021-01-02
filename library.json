@@ -1,0 +1,22 @@
+{
+  "name": "TouchButton",
+  "version": "1.0.0",
+  "description": "A touch button class for the Adafruit GFX library",
+  "keywords": "touch, button",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/quotschmacher/arduino_touch_button"
+  },
+  "authors":
+  [
+    {
+      "name": "Sven Kicherer",
+      "email": "sven.kicherer@yahoo.com",
+      "url": "https://www.sven-kicherer.de/"
+    }
+  ],
+  "license": "MIT",
+  "frameworks": "*",
+  "platforms": "*"
+}
