@@ -94,6 +94,10 @@ bool TouchButton::isPressed(int16_t x, int16_t y)
         state = ButtonState::released;
         drawButton(color_outline, color_fill, color_text);
     }
+    else if (retval && state == ButtonState::pressed)
+    {
+        state = ButtonState::undefined;
+    }
     return retval;
 }
 
