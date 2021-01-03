@@ -96,7 +96,7 @@ bool TouchButton::isPressed(int16_t x, int16_t y)
     }
     else if (!retval && state == ButtonState::pressed)
     {
-        state = ButtonState::undefined;
+        last_pressed_millis = act_millis + press_duration;
     }
     return retval;
 }
