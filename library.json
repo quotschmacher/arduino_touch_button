@@ -1,6 +1,6 @@
 {
   "name": "TouchButton",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A touch button class for the Adafruit GFX library",
   "keywords": "touch, button",
   "repository":
