@@ -77,7 +77,8 @@ bool TouchButton::isPressed(int16_t x, int16_t y)
     if ((x >= touch_area_x_min) && (x <= touch_area_x_max) && (y >= touch_area_y_min) && (y <= touch_area_y_max))
     {
         retval = true;
-        if (callback && ((last_pressed_millis + press_duration) < act_millis))
+        //if (callback && ((last_pressed_millis + press_duration) < act_millis))
+        if (callback && (state != ButtonState::pressed))
         {
             callback(my_string);
         }
@@ -96,7 +97,7 @@ bool TouchButton::isPressed(int16_t x, int16_t y)
     }
     else if (!retval && state == ButtonState::pressed)
     {
-        state = ButtonState::released;
+        state = ButtonState::undefined;
     }
     return retval;
 }
