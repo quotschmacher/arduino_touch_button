@@ -15,6 +15,25 @@ TouchButton::TouchButton(String string, int16_t x_min_touch, int16_t x_max_touch
     //tft.drawCircle(60, 60, 60, ILI9341_BLUE);
 }
 
+TouchButton::TouchButton(uint8_t *bitmap, int16_t height, int16_t width) :
+    my_string(""),
+    my_bitmap(bitmap)
+{
+    bitmap_width = width;
+    bitmap_height = height;
+}
+
+TouchButton::TouchButton(uint8_t *bitmap, int16_t height, int16_t width, int16_t x_min_touch, int16_t x_max_touch, int16_t y_min_touch, int16_t y_max_touch) :
+    my_string(""),
+    touch_x_min(x_min_touch),
+    touch_x_max(x_max_touch),
+    touch_y_min(y_min_touch),
+    touch_y_max(y_max_touch),
+    my_bitmap(bitmap)
+{
+    bitmap_width = width;
+    bitmap_height = height;
+}
 
 void TouchButton::SetColors(uint16_t outline, uint16_t fill, uint16_t text)
 {
@@ -142,8 +161,16 @@ void TouchButton::drawButton(uint16_t ColorOutline, uint16_t ColorFill, uint16_t
         my_tft->drawRoundRect(m_x + i, m_y + i, m_w - i*2, m_h - i*2, radius, ColorOutline);
     }
 
-    // text schreiben
-    drawCentreString(my_string.c_str(), ColorText);
+    if (my_bitmap == nullptr && my_string != "")
+    {
+        // text schreiben
+        drawCentreString(my_string.c_str(), ColorText);
+    }
+    else if (my_bitmap != nullptr && my_string == "")
+    {
+        // tft.drawBitmap(255, 170, myBitmap, 40, 40, ILI9341_WHITE);
+        my_tft->drawBitmap(m_x + ((m_w - bitmap_width) / 2), m_y + ((m_h - bitmap_height) / 2), my_bitmap, bitmap_width, bitmap_height, ColorText);
+    }
 }
 
 String TouchButton::UpdateText(String text)

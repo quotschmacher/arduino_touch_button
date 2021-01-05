@@ -33,7 +33,10 @@ private:
     uint8_t outline_thickness = 1;
     uint8_t textsize = 2;
     unsigned long last_pressed_millis = 0;
-    unsigned long press_duration = 750;
+    unsigned long press_duration = 650;
+    uint8_t *my_bitmap = nullptr;
+    int16_t bitmap_width = -1;
+    int16_t bitmap_height = -1;
 
     Adafruit_GFX* my_tft = nullptr;
 
@@ -44,6 +47,8 @@ private:
 public:
     TouchButton(String string);
     TouchButton(String string, int16_t x_min_touch, int16_t x_max_touch, int16_t y_min_touch, int16_t y_max_touch);
+    TouchButton(uint8_t *bitmap, int16_t height, int16_t width);
+    TouchButton(uint8_t *bitmap, int16_t height, int16_t width, int16_t x_min_touch, int16_t x_max_touch, int16_t y_min_touch, int16_t y_max_touch);
     void SetColors(uint16_t outline, uint16_t fill, uint16_t text);
     void SetColorFill(uint16_t fill);
     void SetColorOutline(uint16_t outline);
